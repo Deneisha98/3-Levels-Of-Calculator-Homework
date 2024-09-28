@@ -1,4 +1,4 @@
-#Homework 3- 3 level Calculator
+## Homework 3
 
 This is a calculator project that supports basic arithmetic operations like add, subtract, multiply, divide, and more. The project also implements object-oriented design principles and stores a history of calculations.
 
