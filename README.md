@@ -7,7 +7,6 @@ This is a calculator project that supports basic arithmetic operations like add,
 - Sigma Function
 - Handles Division by Zero
 - Stores a History of Calculations
-
 ## How to Run
 
 1. Clone the repo.
