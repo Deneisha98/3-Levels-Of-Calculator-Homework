@@ -1,17 +1,15 @@
 from calculator.command import Command
-
-class DivideCommand(Command):
+# calculator/commands/divide_command.py
+class DivideCommand:
     def execute(self, *args):
-        """Divide the first argument by each subsequent argument."""
         if len(args) < 2:
-            raise ValueError("At least two numbers are required to perform division.")
-        try:
-            result = float(args[0])
-            for num in args[1:]:
-                divisor = float(num)
-                if divisor == 0:
-                    raise ZeroDivisionError("Cannot divide by zero.")
-                result /= divisor
-            return result
-        except ValueError:
-            raise ValueError("All arguments must be numbers.")
+            raise ValueError("At least two arguments are required for division.")
+        
+        result = float(args[0])
+        for num in args[1:]:
+            if not isinstance(num, (int, float)):
+                raise ValueError("All arguments must be numbers")
+            if num == 0:
+                raise ZeroDivisionError("Division by zero is not allowed.")
+            result /= num
+        return result
