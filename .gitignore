@@ -4,3 +4,5 @@
 *__pycache__
 .venv
 .path/to/venv/
+.venv/
+venv/
