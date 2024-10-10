@@ -17,16 +17,26 @@ def load_commands():
                 COMMANDS[command_name] = getattr(module, f"{command_name.capitalize()}Command")()
             except ImportError as e:
                 print(f"Error importing module {module_name}: {e}")
+
+def print_help():
+    """Display the help menu."""
+    print("Available commands:")
+    for command in COMMANDS.keys():
+        print(f" - {command}")
+    print("Type 'menu' to see this list again.")
+    print("Type 'quit' or 'exit' to leave the REPL.")
+    print("Type 'help' for help.")
+
 def repl():
     """Run the Read-Evaluate-Print Loop for the calculator."""
     load_commands()
-    print("Calculator REPL. Type 'menu' for available commands, 'quit' to exit.")
+    print("Calculator REPL. Type 'help' for available commands.")
     while True:
         user_input = input("> ").strip().lower()
-        if user_input == "quit":
+        if user_input in {"quit", "exit"}:
             break
-        elif user_input == "menu":
-            print("Available commands:", ', '.join(COMMANDS.keys()))
+        elif user_input == "menu" or user_input == "help":
+            print_help()
         else:
             try:
                 cmd, *args = user_input.split()
@@ -34,7 +44,7 @@ def repl():
                     result = COMMANDS[cmd].execute(*args)
                     print("Result:", result)
                 else:
-                    print("Unknown command. Type 'menu' for available commands.")
+                    print("Unknown command. Type 'help' for available commands.")
             except Exception as e:
                 print(f"Error: {e}")
 
