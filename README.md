@@ -1,4 +1,4 @@
-## Homework 3 (with Homework 4 Updates)
+## Homework 3 (with Homework 5 Updates)
 
 This project implements a calculator with basic arithmetic operations and features object-oriented design. It supports automated testing with pytest and uses the Faker library to generate test data.
 
