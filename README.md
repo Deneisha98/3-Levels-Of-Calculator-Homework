@@ -4,11 +4,11 @@ This project implements a calculator with basic arithmetic operations and featur
 
 
 ## Features
-- Basic Operations: Add, Subtract, Multiply, Divide
-- Handles Division by Zero
-- Sigma Function (Summation)
-- Calculation History
-- Integration with Faker for Test Data Generation
+- Basic Arithmetic Operations: Supports addition, subtraction, multiplication, and division.
+- Graceful Error Handling: Handles division by zero and other invalid inputs with meaningful error messages.
+- Modular Design: Uses the Command Pattern to allow for easy extension of new commands.
+- Interactive REPL (Read-Evaluate-Print Loop): A command-line interface for performing calculations interactively.
+- Automated Testing: Uses `pytest` to verify the functionality of the commands.
 
 ## How to Run
 
@@ -17,7 +17,5 @@ This project implements a calculator with basic arithmetic operations and featur
 3. Run tests with `pytest`.
 
 ## Requirements
-- Python 3.x
-- `pytest`, `faker`
-
-
+- Python 3.x: Ensure Python is installed on your system.
+- pytest: Used for running the test cases. Install it with `pip` if you haven't already.
