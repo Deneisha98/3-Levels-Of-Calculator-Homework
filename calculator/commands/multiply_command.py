@@ -1,13 +1,19 @@
+# calculator/commands/multiply_command.py
 from calculator.command import Command
 
-class MultiplyCommand:
+class MultiplyCommand(Command):
     def execute(self, *args):
+        """Multiply all given arguments."""
         if not args:
             raise ValueError("At least one argument is required for multiplication.")
-        
-        result = 1
-        for num in args:
-            if not isinstance(num, (int, float)):
-                raise ValueError("All arguments must be numbers")
-            result *= num
-        return result
+        try:
+            result = 1.0
+            for num in map(float, args):
+                result *= num
+            return result
+        except ValueError:
+            raise ValueError("All arguments must be numbers.")
+
+    def get_name(self):
+        return "Multiplication"
+
