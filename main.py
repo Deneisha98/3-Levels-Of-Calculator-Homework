@@ -1,7 +1,7 @@
 import sys
 from calculator.plugin_manager import PluginManager
 from decimal import Decimal, InvalidOperation
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 import os
 import logging
 
@@ -20,25 +20,19 @@ environment = os.getenv("ENVIRONMENT", "development")
 logger.info(f"Running in {environment} environment")
 
 def calculate_and_print(a, b, operation_name, manager):
-    # Unified error handling for decimal conversion
     try:
         a_decimal, b_decimal = map(Decimal, [a, b])
         result = manager.execute_plugin(operation_name.capitalize(), a_decimal, b_decimal)
-        logger.info(f"Operation {operation_name} performed successfully with result: {result}")
-        print(f"The result of {a} {operation_name} {b} is equal to {result}")
+        # Format the result to avoid trailing .0 if it's a whole number
+        formatted_result = "{:.0f}".format(result) if result % 1 == 0 else str(result)
+        print(f"The result of {a} {operation_name} {b} is equal to {formatted_result}")
     except InvalidOperation:
-        logger.error(f"Invalid input: {a} or {b} is not a valid number.")
         print(f"Invalid number input: {a} or {b} is not a valid number.")
     except ZeroDivisionError:
-        logger.error("Division by zero error")
         print("Error: Division by zero.")
     except ValueError as e:
-        # Handle the case where the operation is not found
-        logger.error(f"Operation not found: {e}")
         print(e)
     except Exception as e:
-        # Catch-all for unexpected errors
-        logger.error(f"An unexpected error occurred: {e}")
         print(f"An error occurred: {e}")
 
 def main():

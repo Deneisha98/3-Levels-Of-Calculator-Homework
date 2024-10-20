@@ -1,4 +1,3 @@
-# calculator/commands/multiply_command.py
 from calculator.command import Command
 
 class MultiplyCommand(Command):
@@ -10,10 +9,10 @@ class MultiplyCommand(Command):
             result = 1.0
             for num in map(float, args):
                 result *= num
-            return result
+            return int(result) if result.is_integer() else result 
         except ValueError:
             raise ValueError("All arguments must be numbers.")
 
     def get_name(self):
-        return "Multiplication"
+        return "multiply"  
 
