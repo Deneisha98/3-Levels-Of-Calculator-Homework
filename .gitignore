@@ -2,5 +2,14 @@
 .coverage
 .pytest_cache
 *__pycache__
+<<<<<<< HEAD
 .venv
 path/to/venv.env
+=======
+<<<<<<< HEAD
+venv/
+=======
+.env
+logs
+>>>>>>> forked_repo/main
+>>>>>>> 5c458a8ea49fe8c5fc3db8d7b90c1afe72cc247d
